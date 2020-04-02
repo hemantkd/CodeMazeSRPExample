@@ -18,14 +18,14 @@ namespace SRP
 
         public void RemoveEntryAt(int index) => _entries.RemoveAt(index);
 
-        public void SaveToFile(string directoryPath, string filename)
+        public void SaveToFile(string directoryPath, string filename, WorkReport report)
         {
             if (!Directory.Exists(directoryPath))
             {
                 Directory.CreateDirectory(directoryPath);
             }
 
-            File.WriteAllText(Path.Combine(directoryPath, filename), ToString());
+            File.WriteAllText(Path.Combine(directoryPath, filename), report.ToString());
         }
 
         public override string ToString() =>
