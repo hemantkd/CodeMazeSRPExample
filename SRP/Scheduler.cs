@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace SRP
 {
-    public class Scheduler
+    public class Scheduler : IEntryManager<ScheduledTask>
     {
         private readonly List<ScheduledTask> _scheduleTasks;
 
@@ -13,7 +13,7 @@ namespace SRP
             _scheduleTasks = new List<ScheduledTask>();
         }
 
-        public void AddEntry(ScheduledTask scheduledTask) => _scheduleTasks.Add(scheduledTask);
+        public void AddEntry(ScheduledTask entry) => _scheduleTasks.Add(entry);
 
         public void RemoveEntryAt(int index) => _scheduleTasks.RemoveAt(index);
 

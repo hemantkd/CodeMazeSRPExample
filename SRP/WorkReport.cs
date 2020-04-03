@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace SRP
 {
-    public class WorkReport
+    public class WorkReport : IEntryManager<WorkReportEntry>
     {
         private readonly List<WorkReportEntry> _entries;
 
@@ -17,16 +16,6 @@ namespace SRP
         public void AddEntry(WorkReportEntry entry) => _entries.Add(entry);
 
         public void RemoveEntryAt(int index) => _entries.RemoveAt(index);
-
-        public void SaveToFile(string directoryPath, string filename, WorkReport report)
-        {
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-
-            File.WriteAllText(Path.Combine(directoryPath, filename), report.ToString());
-        }
 
         public override string ToString() =>
             string.Join(Environment.NewLine,
